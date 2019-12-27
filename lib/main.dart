@@ -36,54 +36,68 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _levelup() {
     setState(() {
-      if (_money >= _level*10) {
-        _money -= _level*10;
+      if (_money >= _level * 10) {
+        _money -= _level * 10;
         _level += 1;
       }
     });
   }
 
+//  Widget _grade_IMG() {
+//    if (_level < 20) {
+//      return Image.network(
+//          'https://raw.githubusercontent.com/kimDDong/rasing/master/lib/grade_IMG/%EC%88%8F%EA%B3%84%EA%B8%89%20(' +
+//              _level.toString() +
+//              ').png');
+//    } else {
+//      return Image.network(
+//          'https://raw.githubusercontent.com/kimDDong/rasing/master/lib/grade_IMG/%EC%88%8F%EA%B3%84%EA%B8%89%20(19).png');
+//    }
+//  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: InkWell(
-        child:
-        Column(
-          children: <Widget>[
-            Text(
-              'Level',
-            ),
-            Text(
-              '$_level',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Text(
-              'Money',
-            ),
-            Text(
-              '$_money',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            Row(
-              children: <Widget>[
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: InkWell(
+          child: Column(
+            children: <Widget>[
+              Text(
+                'Level',
+              ),
+              Text(
+                '$_level',
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Text(
+                'Money',
+              ),
+              Text(
+                '$_money',
+                style: Theme.of(context).textTheme.display1,
+              ),
+              Row(
+                children: <Widget>[
 //                FloatingActionButton(
 //                  child: Icon(Icons.add),
 //                  onPressed: _incrementCounter,
 //                ),
-                FloatingActionButton(
-                  child: Icon(Icons.add),
-                  onPressed: _levelup,
-                ),
-              ],
-            ),
-            Container(child: ),
-          ],
-        ),
-        onTap: _incrementCounter,
-      )
-    );
+                  FloatingActionButton(
+                    child: Icon(Icons.add),
+                    onPressed: _levelup,
+                  ),
+                ],
+              ),
+              Image.network(
+                  'https://raw.githubusercontent.com/kimDDong/rasing/master/lib/grade_IMG/%EC%88%8F%EA%B3%84%EA%B8%89%20(' +
+                      (_level-1).toString() +
+                      ').png'),
+//              _grade_IMG(),
+            ],
+          ),
+          onTap: _incrementCounter,
+        ));
   }
 }
